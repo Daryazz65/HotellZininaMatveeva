@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotellZininaMatveeva.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +21,19 @@ namespace HotellZininaMatveeva.View.Page
     /// </summary>
     public partial class ComnatPage : System.Windows.Controls.Page
     {
+        List<Status> statuses = App.context.Status.ToList();
         public ComnatPage()
         {
             InitializeComponent();
-
+            // выгрузка из бд---.
             RoomcLb.ItemsSource = App.context.Room.ToList();
+            //---.
+
+            statuses.Insert(0, new Status() { Name = "Все статусы" });
+            FilterByCategoryCmb.ItemsSource = statuses;
+            FilterByCategoryCmb.DisplayMemberPath = "Name";
+            FilterByCategoryCmb.SelectedValuePath = "Id";
+            FilterByCategoryCmb.SelectedIndex = 0;
         }
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)

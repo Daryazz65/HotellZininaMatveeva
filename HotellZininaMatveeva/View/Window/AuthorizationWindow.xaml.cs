@@ -46,7 +46,7 @@ namespace HotellZininaMatveeva.View.Window
         {
             foreach (var user in App.context.User)
             {
-                if (user.RegistrationDate.AddMonths(1) <= DateTime.Now)
+                if (user.RegistrationDate.AddMonths(1) <= DateTime.Now && !user.IsActivated)
                 {
                     user.IsBlocked = true;
                 }
@@ -99,5 +99,7 @@ namespace HotellZininaMatveeva.View.Window
                 FeedBack.Information("Вы успешно авторизовались!");
             }
         }
+
+        // open
     }
 }

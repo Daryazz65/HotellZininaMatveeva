@@ -38,12 +38,27 @@ namespace HotellZininaMatveeva.View.Page
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (SearchTb.Text != string.Empty)
+            {
+                int roomNumber = Convert.ToInt32(SearchTb.Text);
+                RoomcLb.ItemsSource = App.context.Room.Where(r => r.Number == roomNumber).ToList();
+            }
+            else
+            {
+                RoomcLb.ItemsSource = App.context.Room.ToList();
+            }
         }
 
         private void FilterByCategoryCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (FilterByCategoryCmb.SelectedIndex != 0)
+            {
+                RoomcLb.ItemsSource = App.context.Room.Where(r => r.StatusId == FilterByCategoryCmb.SelectedIndex).ToList();
+            }
+            else
+            {
+                RoomcLb.ItemsSource = App.context.Room.ToList();
+            }
         }
 
         private void RoomcLb_SelectionChanged(object sender, SelectionChangedEventArgs e)

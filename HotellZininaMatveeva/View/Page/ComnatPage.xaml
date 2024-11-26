@@ -50,9 +50,11 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock Text="{Binding Number}"/>
+                            <TextBlock Text="{Binding Number, StringFormat={}№{0}}"
+                                       FontSize="26" FontWeight="SemiBold"/>
                             <TextBlock Grid.Row="2" Text="{Binding Floor.Name}"/>
-                            <TextBlock Grid.Row="4" Text="{Binding Category.Name}"/>
+                            <TextBlock Grid.Row="4" Text="{Binding Category.Name}"
+                                       FontSize="16"/>
                             <TextBlock Grid.Row="6" Text="{Binding Status.Name}"/>
                         </Grid>
                         </Border>
